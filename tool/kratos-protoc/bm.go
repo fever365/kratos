@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	_getBMGen = "go get -u github.com/bilibili/kratos/tool/protobuf/protoc-gen-bm"
+	_getBMGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-bm"
 	_bmProtoc = "protoc --proto_path=%s --proto_path=%s --proto_path=%s --bm_out=explicit_http=true:."
 )
 
