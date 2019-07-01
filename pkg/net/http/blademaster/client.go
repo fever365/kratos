@@ -17,11 +17,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/conf/env"
-	"github.com/bilibili/kratos/pkg/net/metadata"
-	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
-	"github.com/bilibili/kratos/pkg/stat"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/conf/env"
+	"github.com/fever365/kratos/pkg/net/metadata"
+	"github.com/fever365/kratos/pkg/net/netutil/breaker"
+	"github.com/fever365/kratos/pkg/stat"
+	xtime "github.com/fever365/kratos/pkg/time"
 
 	"github.com/gogo/protobuf/proto"
 	pkgerr "github.com/pkg/errors"
