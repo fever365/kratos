@@ -52,4 +52,5 @@ replace (
 	google.golang.org/appengine => github.com/golang/appengine v1.1.0
 	google.golang.org/genproto => github.com/google/go-genproto v0.0.0-20180817151627-c66870c02cf8
 	google.golang.org/grpc => github.com/grpc/grpc-go v1.20.1
+	github.com/bilibili/kratos => github.com/fever365/kratos v0.1.0
 )
