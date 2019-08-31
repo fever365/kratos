@@ -19,12 +19,13 @@ import (
 	{{if .UseStrConv}}"strconv"{{end}}
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
-	"github.com/fever365/kratos/pkg/stat/prom"
 	{{if .UseMemcached }}"github.com/fever365/kratos/pkg/cache/memcache"{{end}}
 	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
 	"github.com/fever365/kratos/pkg/log"
 	{{.ImportPackage}}
 )
 
-var _ _mc
+var (
+	_ _mc
+)
 `

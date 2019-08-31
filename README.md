@@ -1,19 +1,19 @@
 ![kratos](doc/img/kratos3.png)
 
 [![Language](https://img.shields.io/badge/Language-Go-blue.svg)](https://golang.org/)
-[![Build Status](https://travis-ci.org/bilibili/kratos.svg?branch=master)](https://travis-ci.org/bilibili/kratos)
+[![Build Status](https://travis-ci.org/fever365/kratos.svg?branch=master)](https://travis-ci.org/fever365/kratos)
 [![GoDoc](https://godoc.org/github.com/fever365/kratos?status.svg)](https://godoc.org/github.com/fever365/kratos)
 [![Go Report Card](https://goreportcard.com/badge/github.com/fever365/kratos)](https://goreportcard.com/report/github.com/fever365/kratos)
 
 # Kratos
 
-Kratos是[bilibili](https://www.bilibili.com)开源的一套Go微服务框架，包含大量微服务相关框架及工具。  
+Kratos是[fever365](https://www.fever365.com)开源的一套Go微服务框架，包含大量微服务相关框架及工具。  
 
 > 名字来源于:《战神》游戏以希腊神话为背景，讲述由凡人成为战神的奎托斯（Kratos）成为战神并展开弑神屠杀的冒险历程。
 
 ## Goals
 
-我们致力于提供完整的微服务研发体验，整合相关框架及工具后，微服务治理相关部分可对整体业务开发周期无感，从而更加聚焦于业务交付。对每位开发者而言，整套Kratos框架也是不错的学习仓库，可以了解和参考到[bilibili](https://www.bilibili.com)在微服务方面的技术积累和经验。
+我们致力于提供完整的微服务研发体验，整合相关框架及工具后，微服务治理相关部分可对整体业务开发周期无感，从而更加聚焦于业务交付。对每位开发者而言，整套Kratos框架也是不错的学习仓库，可以了解和参考到[fever365](https://www.fever365.com)在微服务方面的技术积累和经验。
 
 ## Features
 * HTTP Blademaster：核心基于[gin](https://github.com/gin-gonic/gin)进行模块化设计，简单易用、核心足够轻量；
@@ -54,7 +54,8 @@ go build
 
 ## Documentation
 
-[简体中文](doc/wiki-cn/summary.md)
+> [简体中文](doc/wiki-cn/summary.md)  
+> [FAQ](doc/wiki-cn/FAQ.md)  
 
 ## License
 Kratos is under the MIT license. See the [LICENSE](./LICENSE) file for details.

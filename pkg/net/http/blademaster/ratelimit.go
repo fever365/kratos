@@ -8,15 +8,6 @@ import (
 	"github.com/fever365/kratos/pkg/log"
 	limit "github.com/fever365/kratos/pkg/ratelimit"
 	"github.com/fever365/kratos/pkg/ratelimit/bbr"
-	"github.com/fever365/kratos/pkg/stat/prom"
-)
-
-const (
-	_statName = "go_http_bbr"
-)
-
-var (
-	bbrStats = prom.New().WithState("go_http_bbr", []string{"url"})
 )
 
 // RateLimiter bbr middleware.
@@ -25,7 +16,7 @@ type RateLimiter struct {
 	logTime int64
 }
 
-// New return a ratelimit middleware.
+// NewRateLimiter return a ratelimit middleware.
 func NewRateLimiter(conf *bbr.Config) (s *RateLimiter) {
 	return &RateLimiter{
 		group:   bbr.NewGroup(conf),
@@ -48,7 +39,7 @@ func (b *RateLimiter) Limit() HandlerFunc {
 		limiter := b.group.Get(uri)
 		done, err := limiter.Allow(c)
 		if err != nil {
-			bbrStats.Incr(_statName, uri)
+			_metricServerBBR.Inc(uri)
 			c.JSON(nil, err)
 			c.Abort()
 			return

@@ -10,6 +10,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver/direct"
+
 	"github.com/fever365/kratos/pkg/conf/env"
 	"github.com/fever365/kratos/pkg/conf/flagvar"
 	"github.com/fever365/kratos/pkg/ecode"
@@ -34,9 +37,11 @@ var _grpcTarget flagvar.StringVars
 var (
 	_once           sync.Once
 	_defaultCliConf = &ClientConfig{
-		Dial:    xtime.Duration(time.Second * 10),
-		Timeout: xtime.Duration(time.Millisecond * 250),
-		Subset:  50,
+		Dial:              xtime.Duration(time.Second * 10),
+		Timeout:           xtime.Duration(time.Millisecond * 250),
+		Subset:            50,
+		KeepAliveInterval: xtime.Duration(time.Second * 60),
+		KeepAliveTimeout:  xtime.Duration(time.Second * 20),
 	}
 	_defaultClient *Client
 )
@@ -49,16 +54,24 @@ func baseMetadata() metadata.MD {
 	return gmd
 }
 
+// Register direct resolver by default to handle direct:// scheme.
+func init() {
+	resolver.Register(direct.New())
+}
+
 // ClientConfig is rpc client conf.
 type ClientConfig struct {
-	Dial     xtime.Duration
-	Timeout  xtime.Duration
-	Breaker  *breaker.Config
-	Method   map[string]*ClientConfig
-	Clusters []string
-	Zone     string
-	Subset   int
-	NonBlock bool
+	Dial                   xtime.Duration
+	Timeout                xtime.Duration
+	Breaker                *breaker.Config
+	Method                 map[string]*ClientConfig
+	Clusters               []string
+	Zone                   string
+	Subset                 int
+	NonBlock               bool
+	KeepAliveInterval      xtime.Duration
+	KeepAliveTimeout       xtime.Duration
+	KeepAliveWithoutStream bool
 }
 
 // Client is the framework's client side instance, it contains the ctx, opt and interceptors.
@@ -70,6 +83,17 @@ type Client struct {
 
 	opts     []grpc.DialOption
 	handlers []grpc.UnaryClientInterceptor
+}
+
+// TimeoutCallOption timeout option.
+type TimeoutCallOption struct {
+	*grpc.EmptyCallOption
+	Timeout time.Duration
+}
+
+// WithTimeoutCallOption can override the timeout in ctx and the timeout in the configuration file
+func WithTimeoutCallOption(timeout time.Duration) *TimeoutCallOption {
+	return &TimeoutCallOption{&grpc.EmptyCallOption{}, timeout}
 }
 
 // handle returns a new unary client interceptor for OpenTracing\Logging\LinkTimeout.
@@ -101,11 +125,24 @@ func (c *Client) handle() grpc.UnaryClientInterceptor {
 		c.mutex.RUnlock()
 		brk := c.breaker.Get(method)
 		if err = brk.Allow(); err != nil {
-			statsClient.Incr(method, "breaker")
+			_metricClientReqCodeTotal.Inc(method, "breaker")
 			return
 		}
 		defer onBreaker(brk, &err)
-		_, ctx, cancel = conf.Timeout.Shrink(ctx)
+		var timeOpt *TimeoutCallOption
+		for _, opt := range opts {
+			var tok bool
+			timeOpt, tok = opt.(*TimeoutCallOption)
+			if tok {
+				break
+			}
+		}
+		if timeOpt != nil && timeOpt.Timeout > 0 {
+			ctx, cancel = context.WithTimeout(nmd.WithContext(ctx), timeOpt.Timeout)
+		} else {
+			_, ctx, cancel = conf.Timeout.Shrink(ctx)
+		}
+
 		defer cancel()
 		nmd.Range(ctx,
 			func(key string, value interface{}) {
@@ -138,9 +175,10 @@ func (c *Client) handle() grpc.UnaryClientInterceptor {
 
 func onBreaker(breaker breaker.Breaker, err *error) {
 	if err != nil && *err != nil {
-		if ecode.ServerErr.Equal(*err) || ecode.ServiceUnavailable.Equal(*err) || ecode.Deadline.Equal(*err) || ecode.LimitExceed.Equal(*err) {
+		if ecode.EqualError(ecode.ServerErr, *err) || ecode.EqualError(ecode.ServiceUnavailable, *err) || ecode.EqualError(ecode.Deadline, *err) || ecode.EqualError(ecode.LimitExceed, *err) {
 			breaker.MarkFailed()
 			return
+
 		}
 	}
 	breaker.MarkSuccess()
@@ -185,6 +223,12 @@ func (c *Client) SetConfig(conf *ClientConfig) (err error) {
 	}
 	if conf.Subset <= 0 {
 		conf.Subset = 50
+	}
+	if conf.KeepAliveInterval <= 0 {
+		conf.KeepAliveInterval = xtime.Duration(time.Second * 60)
+	}
+	if conf.KeepAliveTimeout <= 0 {
+		conf.KeepAliveTimeout = xtime.Duration(time.Second * 20)
 	}
 
 	// FIXME(maojian) check Method dial/timeout

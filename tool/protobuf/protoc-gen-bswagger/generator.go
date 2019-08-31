@@ -66,7 +66,7 @@ func (t *swaggerGen) generateSwagger(file *descriptor.FileDescriptorProto) *plug
 	t.defsMap = map[string]*typemap.MessageDefinition{}
 
 	out := &plugin.CodeGeneratorResponse_File{}
-	name := naming.GoFileName(file, ".swagger.json")
+	name := naming.GenFileName(file, ".swagger.json")
 	for _, svc := range file.Service {
 		for _, meth := range svc.Method {
 			if !t.ShouldGenForMethod(file, svc, meth) {
@@ -74,7 +74,9 @@ func (t *swaggerGen) generateSwagger(file *descriptor.FileDescriptorProto) *plug
 			}
 			apiInfo := t.GetHttpInfoCached(file, svc, meth)
 			pathItem := swaggerPathItemObject{}
-
+			if originPathItem, ok := swaggerObj.Paths[apiInfo.Path]; ok {
+				pathItem = originPathItem
+			}
 			op := t.getOperationByHTTPMethod(apiInfo.HttpMethod, &pathItem)
 			op.Summary = apiInfo.Title
 			op.Description = apiInfo.Description

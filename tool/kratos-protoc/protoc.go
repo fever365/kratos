@@ -20,16 +20,18 @@ var (
 	withBM      bool
 	withGRPC    bool
 	withSwagger bool
+	withEcode   bool
 )
 
 func protocAction(ctx *cli.Context) (err error) {
 	if err = checkProtoc(); err != nil {
 		return err
 	}
-	if !withGRPC && !withBM && !withSwagger {
+	if !withGRPC && !withBM && !withSwagger && !withEcode {
 		withBM = true
 		withGRPC = true
 		withSwagger = true
+		withEcode = true
 	}
 	if withBM {
 		if err = installBMGen(); err != nil {
@@ -52,6 +54,14 @@ func protocAction(ctx *cli.Context) (err error) {
 			return
 		}
 		if err = genSwagger(ctx); err != nil {
+			return
+		}
+	}
+	if withEcode {
+		if err = installEcodeGen(); err != nil {
+			return
+		}
+		if err = genEcode(ctx); err != nil {
 			return
 		}
 	}
@@ -120,7 +130,7 @@ func latestKratos() (string, error) {
 	if _, err := os.Stat(ext); !os.IsNotExist(err) {
 		return ext, nil
 	}
-	baseMod := path.Join(gopath, "pkg/mod/github.com/fever365/")
+	baseMod := path.Join(gopath, "pkg/mod/github.com/fever365")
 	files, err := ioutil.ReadDir(baseMod)
 	if err != nil {
 		return "", err
@@ -135,7 +145,7 @@ func latestKratos() (string, error) {
 
 func gopath() (gp string) {
 	gopaths := strings.Split(os.Getenv("GOPATH"), ":")
-	if len(gopaths) == 1 {
+	if len(gopaths) == 1 && gopaths[0] != "" {
 		return gopaths[0]
 	}
 	pwd, err := os.Getwd()
@@ -147,6 +157,9 @@ func gopath() (gp string) {
 		return
 	}
 	for _, gopath := range gopaths {
+		if gopath == "" {
+			continue
+		}
 		absgp, err := filepath.Abs(gopath)
 		if err != nil {
 			return

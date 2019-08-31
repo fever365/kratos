@@ -3,18 +3,14 @@ package sql
 import (
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	"github.com/fever365/kratos/pkg/stat"
 	"github.com/fever365/kratos/pkg/time"
 
 	// database driver
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var stats = stat.DB
-
 // Config mysql config.
 type Config struct {
-	Addr         string          // for trace
 	DSN          string          // write data source name.
 	ReadDSN      []string        // read data source name.
 	Active       int             // pool
