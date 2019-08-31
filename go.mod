@@ -12,8 +12,10 @@ require (
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/openzipkin/zipkin-go v0.2.1
 	github.com/pkg/errors v0.8.1
+	github.com/shirou/gopsutil v2.18.12+incompatible
 	github.com/stretchr/testify v1.4.0
 	google.golang.org/grpc v1.23.0
+	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.29.1
 	gopkg.in/yaml.v2 v2.2.2
 )
