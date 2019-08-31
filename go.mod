@@ -3,6 +3,8 @@ module github.com/fever365/kratos
 go 1.12
 
 require (
+	github.com/BurntSushi/toml v0.3.1
+	github.com/fsnotify/fsnotify v1.4.7
 	github.com/go-playground/locales v0.12.1 // indirect
 	github.com/go-playground/universal-translator v0.16.0 // indirect
 	github.com/gogo/protobuf v1.2.1
@@ -13,4 +15,5 @@ require (
 	github.com/stretchr/testify v1.4.0
 	google.golang.org/grpc v1.23.0
 	gopkg.in/go-playground/validator.v9 v9.29.1
+	gopkg.in/yaml.v2 v2.2.2
 )
