@@ -9,8 +9,13 @@ import (
 	"testing"
 	"time"
 
+<<<<<<< HEAD
 	"github.com/bilibili/kratos/pkg/ratelimit"
 	"github.com/bilibili/kratos/pkg/stat/metric"
+=======
+	"github.com/fever365/kratos/pkg/ratelimit"
+	"github.com/fever365/kratos/pkg/stat/metric"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 	"github.com/stretchr/testify/assert"
 )
 

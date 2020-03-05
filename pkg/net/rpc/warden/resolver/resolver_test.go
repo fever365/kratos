@@ -5,7 +5,11 @@ import (
 	"testing"
 	"time"
 
+<<<<<<< HEAD
 	"github.com/bilibili/kratos/pkg/naming"
+=======
+	"github.com/fever365/kratos/pkg/naming"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 func Test_FilterLittle(t *testing.T) {

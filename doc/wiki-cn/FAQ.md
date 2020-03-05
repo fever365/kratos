@@ -2,7 +2,11 @@
 
 执行
 ```shell
+<<<<<<< HEAD
 go get -u github.com/bilibili/kratos/tool/kratos
+=======
+go get -u github.com/fever365/kratos/tool/kratos
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 ```
 出现以下错误时
 ```shell

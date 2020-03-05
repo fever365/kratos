@@ -46,8 +46,13 @@ import (
 	"context"
 	"fmt"
 
+<<<<<<< HEAD
 	"github.com/bilibili/kratos/pkg/cache/memcache"
 	"github.com/bilibili/kratos/pkg/log"
+=======
+	"github.com/fever365/kratos/pkg/cache/memcache"
+	"github.com/fever365/kratos/pkg/log"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 var (

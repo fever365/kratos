@@ -7,8 +7,13 @@ import (
 	"testing"
 	"time"
 
+<<<<<<< HEAD
 	"github.com/bilibili/kratos/pkg/net/trace"
 	xtime "github.com/bilibili/kratos/pkg/time"
+=======
+	"github.com/fever365/kratos/pkg/net/trace"
+	xtime "github.com/fever365/kratos/pkg/time"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 func TestZipkin(t *testing.T) {

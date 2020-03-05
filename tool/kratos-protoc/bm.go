@@ -7,7 +7,11 @@ import (
 )
 
 const (
+<<<<<<< HEAD
 	_getBMGen = "go get -u github.com/bilibili/kratos/tool/protobuf/protoc-gen-bm"
+=======
+	_getBMGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-bm"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 	_bmProtoc = "protoc --proto_path=%s --proto_path=%s --proto_path=%s --bm_out=:."
 )
 

@@ -47,7 +47,11 @@ go get google.golang.org/genproto/...
 6.安装kratos tool
 
 ```
+<<<<<<< HEAD
 go get -u github.com/bilibili/kratos/tool/kratos
+=======
+go get -u github.com/fever365/kratos/tool/kratos
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 cd $GOPATH/src
 kratos new kratos-demo --proto
 ```

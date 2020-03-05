@@ -13,12 +13,21 @@ import (
 	"sync/atomic"
 	"time"
 
+<<<<<<< HEAD
 	"github.com/bilibili/kratos/pkg/conf/dsn"
 	"github.com/bilibili/kratos/pkg/log"
 	"github.com/bilibili/kratos/pkg/net/criticality"
 	"github.com/bilibili/kratos/pkg/net/ip"
 	"github.com/bilibili/kratos/pkg/net/metadata"
 	xtime "github.com/bilibili/kratos/pkg/time"
+=======
+	"github.com/fever365/kratos/pkg/conf/dsn"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/criticality"
+	"github.com/fever365/kratos/pkg/net/ip"
+	"github.com/fever365/kratos/pkg/net/metadata"
+	xtime "github.com/fever365/kratos/pkg/time"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 	"github.com/pkg/errors"
 )
