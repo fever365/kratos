@@ -2,9 +2,9 @@
 
 [![Language](https://img.shields.io/badge/Language-Go-blue.svg)](https://golang.org/)
 <<<<<<< HEAD
-[![Build Status](https://travis-ci.org/bilibili/kratos.svg?branch=master)](https://travis-ci.org/bilibili/kratos)
-[![GoDoc](https://godoc.org/github.com/bilibili/kratos?status.svg)](https://godoc.org/github.com/bilibili/kratos)
-[![Go Report Card](https://goreportcard.com/badge/github.com/bilibili/kratos)](https://goreportcard.com/report/github.com/bilibili/kratos)
+[![Build Status](https://travis-ci.org/fever365/kratos.svg?branch=master)](https://travis-ci.org/fever365/kratos)
+[![GoDoc](https://godoc.org/github.com/fever365/kratos?status.svg)](https://godoc.org/github.com/fever365/kratos)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fever365/kratos)](https://goreportcard.com/report/github.com/fever365/kratos)
 =======
 [![Build Status](https://travis-ci.org/fever365/kratos.svg?branch=master)](https://travis-ci.org/fever365/kratos)
 [![GoDoc](https://godoc.org/github.com/fever365/kratos?status.svg)](https://godoc.org/github.com/fever365/kratos)
@@ -39,12 +39,12 @@ Go version>=1.12 and GO111MODULE=on
 
 ### Installation
 ```shell
-go get -u github.com/bilibili/kratos/tool/kratos
+go get -u github.com/fever365/kratos/tool/kratos
 cd $GOPATH/src
 kratos new kratos-demo
 ```
 
-通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/bilibili/kratos-demo) 
+通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/fever365/kratos-demo) 
 
 ### Build & Run
 

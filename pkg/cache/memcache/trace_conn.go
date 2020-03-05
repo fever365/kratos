@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/trace"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/trace"
 )
 
 const (

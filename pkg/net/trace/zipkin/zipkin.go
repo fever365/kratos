@@ -3,10 +3,10 @@ package zipkin
 import (
 	"fmt"
 <<<<<<< HEAD
-	protogen "github.com/bilibili/kratos/pkg/net/trace/proto"
+	protogen "github.com/fever365/kratos/pkg/net/trace/proto"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/net/trace"
+	"github.com/fever365/kratos/pkg/net/trace"
 =======
 	protogen "github.com/fever365/kratos/pkg/net/trace/proto"
 	"time"

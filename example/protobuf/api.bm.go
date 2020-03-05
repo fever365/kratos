@@ -7,8 +7,8 @@ import (
 	"context"
 
 <<<<<<< HEAD
-	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
-	"github.com/bilibili/kratos/pkg/net/http/blademaster/binding"
+	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/fever365/kratos/pkg/net/http/blademaster/binding"
 =======
 	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
 	"github.com/fever365/kratos/pkg/net/http/blademaster/binding"

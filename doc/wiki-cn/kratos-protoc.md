@@ -14,7 +14,7 @@ kratos tool protoc --swagger api.proto
 ```
 
 <<<<<<< HEAD
-执行生成如 `api.pb.go/api.bm.go/api.swagger.json/api.ecode.go` 的对应文件，需要注意的是：`ecode`生成有固定规则，需要首先是`enum`类型，且`enum`名字要以`ErrCode`结尾，如`enum UserErrCode`。详情可见：[example](https://github.com/bilibili/kratos/tree/master/example/protobuf)
+执行生成如 `api.pb.go/api.bm.go/api.swagger.json/api.ecode.go` 的对应文件，需要注意的是：`ecode`生成有固定规则，需要首先是`enum`类型，且`enum`名字要以`ErrCode`结尾，如`enum UserErrCode`。详情可见：[example](https://github.com/fever365/kratos/tree/master/example/protobuf)
 =======
 执行生成如 `api.pb.go/api.bm.go/api.swagger.json/api.ecode.go` 的对应文件，需要注意的是：`ecode`生成有固定规则，需要首先是`enum`类型，且`enum`名字要以`ErrCode`结尾，如`enum UserErrCode`。详情可见：[example](https://github.com/fever365/kratos/tree/master/example/protobuf)
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
@@ -25,10 +25,10 @@ kratos tool protoc --swagger api.proto
 
 ```shell
 <<<<<<< HEAD
-protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/bilibili/kratos/third_party --proto_path=. --bm_out=:. api.proto
-protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/bilibili/kratos/third_party --proto_path=. --gofast_out=plugins=grpc:. api.proto
-protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/bilibili/kratos/third_party --proto_path=. --bswagger_out=:. api.proto
-protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/bilibili/kratos/third_party --proto_path=. --ecode_out=:. api.proto
+protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --bm_out=:. api.proto
+protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --gofast_out=plugins=grpc:. api.proto
+protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --bswagger_out=:. api.proto
+protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --ecode_out=:. api.proto
 =======
 protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --bm_out=:. api.proto
 protoc --proto_path=$GOPATH --proto_path=$GOPATH/github.com/fever365/kratos/third_party --proto_path=. --gofast_out=plugins=grpc:. api.proto

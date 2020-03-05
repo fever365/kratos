@@ -7,7 +7,7 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/container/pool"
+	"github.com/fever365/kratos/pkg/container/pool"
 =======
 	"github.com/fever365/kratos/pkg/container/pool"
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774

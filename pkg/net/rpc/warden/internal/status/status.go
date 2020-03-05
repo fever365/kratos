@@ -10,8 +10,8 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/bilibili/kratos/pkg/ecode"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden/internal/pb"
+	"github.com/fever365/kratos/pkg/ecode"
+	"github.com/fever365/kratos/pkg/net/rpc/warden/internal/pb"
 )
 
 // togRPCCode convert ecode.Codo to gRPC code

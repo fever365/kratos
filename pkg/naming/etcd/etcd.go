@@ -13,8 +13,8 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/naming"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/naming"
 =======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/naming"

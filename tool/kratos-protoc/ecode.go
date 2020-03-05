@@ -8,7 +8,7 @@ import (
 
 const (
 <<<<<<< HEAD
-	_getEcodeGen = "go get -u github.com/bilibili/kratos/tool/protobuf/protoc-gen-ecode"
+	_getEcodeGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode"
 =======
 	_getEcodeGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode"
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774

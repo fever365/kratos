@@ -7,13 +7,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/conf/env"
-	"github.com/bilibili/kratos/pkg/naming"
-	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden"
-	pb "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/proto/testproto"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/conf/env"
+	"github.com/fever365/kratos/pkg/naming"
+	"github.com/fever365/kratos/pkg/net/netutil/breaker"
+	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	pb "github.com/fever365/kratos/pkg/net/rpc/warden/internal/proto/testproto"
+	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
+	xtime "github.com/fever365/kratos/pkg/time"
 
 	"github.com/stretchr/testify/assert"
 )

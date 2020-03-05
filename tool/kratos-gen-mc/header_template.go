@@ -20,9 +20,9 @@ import (
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
 <<<<<<< HEAD
-	{{if .UseMemcached }}"github.com/bilibili/kratos/pkg/cache/memcache"{{end}}
-	{{if .EnableBatch }}"github.com/bilibili/kratos/pkg/sync/errgroup"{{end}}
-	"github.com/bilibili/kratos/pkg/log"
+	{{if .UseMemcached }}"github.com/fever365/kratos/pkg/cache/memcache"{{end}}
+	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
+	"github.com/fever365/kratos/pkg/log"
 =======
 	{{if .UseMemcached }}"github.com/fever365/kratos/pkg/cache/memcache"{{end}}
 	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}

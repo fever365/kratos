@@ -24,8 +24,8 @@ import (
 	"sync"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/cache"
-	"github.com/bilibili/kratos/pkg/sync/errgroup"
+	"github.com/fever365/kratos/pkg/cache"
+	"github.com/fever365/kratos/pkg/sync/errgroup"
 =======
 	"github.com/fever365/kratos/pkg/cache"
 	"github.com/fever365/kratos/pkg/sync/errgroup"

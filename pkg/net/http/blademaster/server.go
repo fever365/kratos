@@ -14,12 +14,12 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/conf/dsn"
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/criticality"
-	"github.com/bilibili/kratos/pkg/net/ip"
-	"github.com/bilibili/kratos/pkg/net/metadata"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/conf/dsn"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/criticality"
+	"github.com/fever365/kratos/pkg/net/ip"
+	"github.com/fever365/kratos/pkg/net/metadata"
+	xtime "github.com/fever365/kratos/pkg/time"
 =======
 	"github.com/fever365/kratos/pkg/conf/dsn"
 	"github.com/fever365/kratos/pkg/log"

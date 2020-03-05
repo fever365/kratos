@@ -7,9 +7,9 @@ import (
 	"sync"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/metadata"
-	"github.com/bilibili/kratos/pkg/net/trace"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/metadata"
+	"github.com/fever365/kratos/pkg/net/trace"
 =======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/net/metadata"

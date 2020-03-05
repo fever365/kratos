@@ -6,13 +6,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/container/group"
-	"github.com/bilibili/kratos/pkg/ecode"
-	"github.com/bilibili/kratos/pkg/log"
-	limit "github.com/bilibili/kratos/pkg/ratelimit"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/fever365/kratos/pkg/container/group"
+	"github.com/fever365/kratos/pkg/ecode"
+	"github.com/fever365/kratos/pkg/log"
+	limit "github.com/fever365/kratos/pkg/ratelimit"
+	"github.com/fever365/kratos/pkg/stat/metric"
 
-	cpustat "github.com/bilibili/kratos/pkg/stat/sys/cpu"
+	cpustat "github.com/fever365/kratos/pkg/stat/sys/cpu"
 )
 
 var (
@@ -32,7 +32,7 @@ func init() {
 	go cpuproc()
 }
 
-// cpu = cpuᵗ⁻¹ * decay + cpuᵗ * (1 - decay)	
+// cpu = cpuᵗ⁻¹ * decay + cpuᵗ * (1 - decay)
 func cpuproc() {
 	ticker := time.NewTicker(time.Millisecond * 250)
 	defer func() {

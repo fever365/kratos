@@ -20,7 +20,7 @@ kratos本身不提供整套`trace`数据方案，但在`net/trace/report.go`内�
 ### zipkin使用
 
 <<<<<<< HEAD
-可以看[zipkin](https://github.com/bilibili/kratos/tree/master/pkg/net/trace/zipkin)的协议上报实现，具体使用方式如下：
+可以看[zipkin](https://github.com/fever365/kratos/tree/master/pkg/net/trace/zipkin)的协议上报实现，具体使用方式如下：
 =======
 可以看[zipkin](https://github.com/fever365/kratos/tree/master/pkg/net/trace/zipkin)的协议上报实现，具体使用方式如下：
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
@@ -31,7 +31,7 @@ kratos本身不提供整套`trace`数据方案，但在`net/trace/report.go`内�
 ```go
 // 忽略其他代码
 <<<<<<< HEAD
-import "github.com/bilibili/kratos/pkg/net/trace/zipkin"
+import "github.com/fever365/kratos/pkg/net/trace/zipkin"
 =======
 import "github.com/fever365/kratos/pkg/net/trace/zipkin"
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774

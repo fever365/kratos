@@ -10,8 +10,8 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/ratelimit"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/fever365/kratos/pkg/ratelimit"
+	"github.com/fever365/kratos/pkg/stat/metric"
 =======
 	"github.com/fever365/kratos/pkg/ratelimit"
 	"github.com/fever365/kratos/pkg/stat/metric"

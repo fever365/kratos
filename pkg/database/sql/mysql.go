@@ -2,9 +2,9 @@ package sql
 
 import (
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
-	"github.com/bilibili/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/netutil/breaker"
+	"github.com/fever365/kratos/pkg/time"
 =======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/net/netutil/breaker"

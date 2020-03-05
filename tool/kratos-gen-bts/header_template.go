@@ -18,8 +18,8 @@ import (
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/cache"
-	{{if .EnableBatch }}"github.com/bilibili/kratos/pkg/sync/errgroup"{{end}}
+	"github.com/fever365/kratos/pkg/cache"
+	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
 =======
 	"github.com/fever365/kratos/pkg/cache"
 	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}

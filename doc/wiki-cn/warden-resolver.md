@@ -119,9 +119,9 @@ package dao
 import (
 	"context"
 
-	"github.com/bilibili/kratos/pkg/naming/discovery"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/fever365/kratos/pkg/naming/discovery"
+	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
 
 	"google.golang.org/grpc"
 )
@@ -207,9 +207,9 @@ package dao
 import (
 	"context"
 
-	"github.com/bilibili/kratos/pkg/naming/etcd"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/fever365/kratos/pkg/naming/etcd"
+	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
 
 	"google.golang.org/grpc"
 )

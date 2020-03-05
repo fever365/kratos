@@ -6,9 +6,9 @@ import (
 	"os"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/tool/protobuf/pkg/gen"
-	"github.com/bilibili/kratos/tool/protobuf/pkg/generator"
-	ecodegen "github.com/bilibili/kratos/tool/protobuf/protoc-gen-ecode/generator"
+	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
+	"github.com/fever365/kratos/tool/protobuf/pkg/generator"
+	ecodegen "github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode/generator"
 =======
 	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
 	"github.com/fever365/kratos/tool/protobuf/pkg/generator"

@@ -8,8 +8,8 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/net/trace"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/net/trace"
+	xtime "github.com/fever365/kratos/pkg/time"
 =======
 	"github.com/fever365/kratos/pkg/net/trace"
 	xtime "github.com/fever365/kratos/pkg/time"

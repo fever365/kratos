@@ -2,9 +2,9 @@ package auth
 
 import (
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/ecode"
-	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
-	"github.com/bilibili/kratos/pkg/net/metadata"
+	"github.com/fever365/kratos/pkg/ecode"
+	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/fever365/kratos/pkg/net/metadata"
 =======
 	"github.com/fever365/kratos/pkg/ecode"
 	bm "github.com/fever365/kratos/pkg/net/http/blademaster"

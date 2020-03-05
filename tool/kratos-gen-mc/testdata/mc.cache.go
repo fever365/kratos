@@ -47,8 +47,8 @@ import (
 	"fmt"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/cache/memcache"
-	"github.com/bilibili/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/cache/memcache"
+	"github.com/fever365/kratos/pkg/log"
 =======
 	"github.com/fever365/kratos/pkg/cache/memcache"
 	"github.com/fever365/kratos/pkg/log"

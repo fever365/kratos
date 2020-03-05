@@ -9,8 +9,8 @@ import (
 	"strconv"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/conf/env"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/fever365/kratos/pkg/conf/env"
+	"github.com/fever365/kratos/pkg/stat/metric"
 =======
 	"github.com/fever365/kratos/pkg/conf/env"
 	"github.com/fever365/kratos/pkg/stat/metric"

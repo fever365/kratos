@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 <<<<<<< HEAD
-	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
-	"github.com/bilibili/kratos/example/blademaster/middleware/auth"
-	"github.com/bilibili/kratos/pkg/net/metadata"
+	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/fever365/kratos/example/blademaster/middleware/auth"
+	"github.com/fever365/kratos/pkg/net/metadata"
 =======
 	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
 	"github.com/fever365/kratos/example/blademaster/middleware/auth"

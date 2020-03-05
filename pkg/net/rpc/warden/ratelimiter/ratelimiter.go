@@ -6,10 +6,10 @@ import (
 	"time"
 
 <<<<<<< HEAD
-	"github.com/bilibili/kratos/pkg/log"
-	limit "github.com/bilibili/kratos/pkg/ratelimit"
-	"github.com/bilibili/kratos/pkg/ratelimit/bbr"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/fever365/kratos/pkg/log"
+	limit "github.com/fever365/kratos/pkg/ratelimit"
+	"github.com/fever365/kratos/pkg/ratelimit/bbr"
+	"github.com/fever365/kratos/pkg/stat/metric"
 =======
 	"github.com/fever365/kratos/pkg/log"
 	limit "github.com/fever365/kratos/pkg/ratelimit"

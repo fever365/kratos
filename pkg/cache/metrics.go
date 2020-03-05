@@ -1,7 +1,7 @@
 package cache
 
 <<<<<<< HEAD
-import "github.com/bilibili/kratos/pkg/stat/metric"
+import "github.com/fever365/kratos/pkg/stat/metric"
 =======
 import "github.com/fever365/kratos/pkg/stat/metric"
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774

@@ -7,7 +7,7 @@ var toolIndexs = []*Tool{
 		Name:      "kratos",
 		Alias:     "kratos",
 		BuildTime: time.Date(2019, 6, 21, 0, 0, 0, 0, time.Local),
-		Install:   "go get -u github.com/bilibili/kratos/tool/kratos",
+		Install:   "go get -u github.com/fever365/kratos/tool/kratos",
 		Summary:   "Kratos工具集本体",
 		Platform:  []string{"darwin", "linux", "windows"},
 		Author:    "kratos",
@@ -16,7 +16,7 @@ var toolIndexs = []*Tool{
 		Name:      "protoc",
 		Alias:     "kratos-protoc",
 		BuildTime: time.Date(2019, 6, 21, 0, 0, 0, 0, time.Local),
-		Install:   "go get -u github.com/bilibili/kratos/tool/kratos-protoc",
+		Install:   "go get -u github.com/fever365/kratos/tool/kratos-protoc",
 		Summary:   "快速方便生成pb.go的protoc封装，windows、Linux请先安装protoc工具",
 		Platform:  []string{"darwin", "linux", "windows"},
 		Author:    "kratos",
@@ -35,7 +35,7 @@ var toolIndexs = []*Tool{
 		Alias:     "kratos-gen-bts",
 		BuildTime: time.Date(2019, 7, 23, 0, 0, 0, 0, time.Local),
 <<<<<<< HEAD
-		Install:   "go get -u github.com/bilibili/kratos/tool/kratos-gen-bts",
+		Install:   "go get -u github.com/fever365/kratos/tool/kratos-gen-bts",
 =======
 		Install:   "go get -u github.com/fever365/kratos/tool/kratos-gen-bts",
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
@@ -48,7 +48,7 @@ var toolIndexs = []*Tool{
 		Alias:     "kratos-gen-mc",
 		BuildTime: time.Date(2019, 7, 23, 0, 0, 0, 0, time.Local),
 <<<<<<< HEAD
-		Install:   "go get -u github.com/bilibili/kratos/tool/kratos-gen-mc",
+		Install:   "go get -u github.com/fever365/kratos/tool/kratos-gen-mc",
 =======
 		Install:   "go get -u github.com/fever365/kratos/tool/kratos-gen-mc",
 >>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
