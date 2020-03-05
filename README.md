@@ -1,9 +1,15 @@
 ![kratos](doc/img/kratos3.png)
 
 [![Language](https://img.shields.io/badge/Language-Go-blue.svg)](https://golang.org/)
+<<<<<<< HEAD
+[![Build Status](https://travis-ci.org/bilibili/kratos.svg?branch=master)](https://travis-ci.org/bilibili/kratos)
+[![GoDoc](https://godoc.org/github.com/bilibili/kratos?status.svg)](https://godoc.org/github.com/bilibili/kratos)
+[![Go Report Card](https://goreportcard.com/badge/github.com/bilibili/kratos)](https://goreportcard.com/report/github.com/bilibili/kratos)
+=======
 [![Build Status](https://travis-ci.org/fever365/kratos.svg?branch=master)](https://travis-ci.org/fever365/kratos)
 [![GoDoc](https://godoc.org/github.com/fever365/kratos?status.svg)](https://godoc.org/github.com/fever365/kratos)
 [![Go Report Card](https://goreportcard.com/badge/github.com/fever365/kratos)](https://goreportcard.com/report/github.com/fever365/kratos)
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 # Kratos
 
@@ -17,8 +23,8 @@ Kratos是[fever365](https://www.fever365.com)开源的一套Go微服务框架，
 
 ## Features
 * HTTP Blademaster：核心基于[gin](https://github.com/gin-gonic/gin)进行模块化设计，简单易用、核心足够轻量；
-* GRPC Warden：基于官方gRPC开发，集成[discovery](https://github.com/fever365/discovery)服务发现，并融合P2C负载均衡；
-* Cache：优雅的接口化设计，非常方便的缓存序列化，推荐结合代理模式[overlord](https://github.com/fever365/overlord)；
+* GRPC Warden：基于官方gRPC开发，集成[discovery](https://github.com/bilibili/discovery)服务发现，并融合P2C负载均衡；
+* Cache：优雅的接口化设计，非常方便的缓存序列化，推荐结合代理模式[overlord](https://github.com/bilibili/overlord)；
 * Database：集成MySQL/HBase/TiDB，添加熔断保护和统计支持，可快速发现数据层压力；
 * Config：方便易用的[paladin sdk](doc/wiki-cn/config.md)，可配合远程配置中心，实现配置版本管理和更新；
 * Log：类似[zap](https://github.com/uber-go/zap)的field实现高性能日志库，并结合log-agent实现远程日志管理；
@@ -33,12 +39,12 @@ Go version>=1.12 and GO111MODULE=on
 
 ### Installation
 ```shell
-go get -u github.com/fever365/kratos/tool/kratos
+go get -u github.com/bilibili/kratos/tool/kratos
 cd $GOPATH/src
 kratos new kratos-demo
 ```
 
-通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/fever365/kratos-demo) 
+通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/bilibili/kratos-demo) 
 
 ### Build & Run
 

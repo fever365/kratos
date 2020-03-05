@@ -12,8 +12,13 @@ import (
 	"sync/atomic"
 	"time"
 
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/naming"
+=======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/naming"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 	"go.etcd.io/etcd/clientv3"
 	"go.etcd.io/etcd/mvcc/mvccpb"
 	"google.golang.org/grpc"

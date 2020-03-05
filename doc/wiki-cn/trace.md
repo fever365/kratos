@@ -19,14 +19,22 @@ kratos本身不提供整套`trace`数据方案，但在`net/trace/report.go`内�
 
 ### zipkin使用
 
+<<<<<<< HEAD
+可以看[zipkin](https://github.com/bilibili/kratos/tree/master/pkg/net/trace/zipkin)的协议上报实现，具体使用方式如下：
+=======
 可以看[zipkin](https://github.com/fever365/kratos/tree/master/pkg/net/trace/zipkin)的协议上报实现，具体使用方式如下：
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 1. 前提是需要有一套自己搭建的`zipkin`集群
 2. 在业务代码的`main`函数内进行初始化，代码如下：
 
 ```go
 // 忽略其他代码
+<<<<<<< HEAD
+import "github.com/bilibili/kratos/pkg/net/trace/zipkin"
+=======
 import "github.com/fever365/kratos/pkg/net/trace/zipkin"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 // 忽略其他代码
 func main(){
     // 忽略其他代码

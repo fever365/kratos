@@ -8,10 +8,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	"github.com/fever365/kratos/pkg/net/trace"
+	"github.com/bilibili/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
+	"github.com/bilibili/kratos/pkg/net/trace"
 
 	"github.com/pkg/errors"
 )

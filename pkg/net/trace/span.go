@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	protogen "github.com/fever365/kratos/pkg/net/trace/proto"
+	protogen "github.com/bilibili/kratos/pkg/net/trace/proto"
 )
 
 const (

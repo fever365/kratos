@@ -6,9 +6,15 @@ import (
 	"runtime"
 	"sync"
 
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/net/metadata"
+	"github.com/bilibili/kratos/pkg/net/trace"
+=======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/net/metadata"
 	"github.com/fever365/kratos/pkg/net/trace"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 var (

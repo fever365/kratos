@@ -1,9 +1,15 @@
 package auth
 
 import (
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/ecode"
+	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
+	"github.com/bilibili/kratos/pkg/net/metadata"
+=======
 	"github.com/fever365/kratos/pkg/ecode"
 	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
 	"github.com/fever365/kratos/pkg/net/metadata"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 // Config is the identify config model.

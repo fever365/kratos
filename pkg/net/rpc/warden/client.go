@@ -10,6 +10,21 @@ import (
 	"sync"
 	"time"
 
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver/direct"
+
+	"github.com/bilibili/kratos/pkg/conf/env"
+	"github.com/bilibili/kratos/pkg/conf/flagvar"
+	"github.com/bilibili/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/naming"
+	nmd "github.com/bilibili/kratos/pkg/net/metadata"
+	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/balancer/p2c"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/internal/status"
+	"github.com/bilibili/kratos/pkg/net/trace"
+	xtime "github.com/bilibili/kratos/pkg/time"
+=======
 	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
 	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver/direct"
 
@@ -23,6 +38,7 @@ import (
 	"github.com/fever365/kratos/pkg/net/rpc/warden/internal/status"
 	"github.com/fever365/kratos/pkg/net/trace"
 	xtime "github.com/fever365/kratos/pkg/time"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"

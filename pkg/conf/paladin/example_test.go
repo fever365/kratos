@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/fever365/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
 
 	"github.com/BurntSushi/toml"
 )

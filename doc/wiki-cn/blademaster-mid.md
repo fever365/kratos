@@ -76,7 +76,11 @@ engine.Use(YourMiddleware())
 
 # 局部中间件
 
+<<<<<<< HEAD
+先来看一段鉴权伪代码示例([auth示例代码位置](https://github.com/bilibili/kratos/tree/master/example/blademaster/middleware/auth))：
+=======
 先来看一段鉴权伪代码示例([auth示例代码位置](https://github.com/fever365/kratos/tree/master/example/blademaster/middleware/auth))：
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 ```go
 func Example() {
@@ -124,7 +128,11 @@ func Example() {
 ```go
 e := bm.DefaultServer(nil)
 // 挂载自适应限流中间件到 bm engine，使用默认配置
+<<<<<<< HEAD
+csrf := bm.CSRF([]string{"bilibili.com"}, []string{"/a/api"})
+=======
 csrf := bm.CSRF([]string{"fever365.com"}, []string{"/a/api"})
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 e.Use(csrf)
 // 或者
 e.GET("/api", csrf, myHandler)

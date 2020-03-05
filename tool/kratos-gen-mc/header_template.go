@@ -19,9 +19,15 @@ import (
 	{{if .UseStrConv}}"strconv"{{end}}
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
+<<<<<<< HEAD
+	{{if .UseMemcached }}"github.com/bilibili/kratos/pkg/cache/memcache"{{end}}
+	{{if .EnableBatch }}"github.com/bilibili/kratos/pkg/sync/errgroup"{{end}}
+	"github.com/bilibili/kratos/pkg/log"
+=======
 	{{if .UseMemcached }}"github.com/fever365/kratos/pkg/cache/memcache"{{end}}
 	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
 	"github.com/fever365/kratos/pkg/log"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 	{{.ImportPackage}}
 )
 

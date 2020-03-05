@@ -74,8 +74,13 @@ import (
 
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+=======
 	"github.com/fever365/kratos/pkg/conf/paladin"
 	"github.com/fever365/kratos/pkg/log"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 func main() {
@@ -125,8 +130,13 @@ import (
 	"{{.ModuleName}}/internal/server/grpc"
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+=======
 	"github.com/fever365/kratos/pkg/conf/paladin"
 	"github.com/fever365/kratos/pkg/log"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 func main() {
@@ -180,12 +190,12 @@ import (
 	"context"
 	"time"
 
-	"github.com/fever365/kratos/pkg/cache/memcache"
-	"github.com/fever365/kratos/pkg/cache/redis"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/database/sql"
-	"github.com/fever365/kratos/pkg/log"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/cache/memcache"
+	"github.com/bilibili/kratos/pkg/cache/redis"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/database/sql"
+	"github.com/bilibili/kratos/pkg/log"
+	xtime "github.com/bilibili/kratos/pkg/time"
 )
 
 // Dao dao interface
@@ -284,7 +294,11 @@ import (
 	"context"
 
 	"{{.ModuleName}}/internal/dao"
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+=======
 	"github.com/fever365/kratos/pkg/conf/paladin"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 // Service service.
@@ -325,7 +339,11 @@ import (
 
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/dao"
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+=======
 	"github.com/fever365/kratos/pkg/conf/paladin"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 	"github.com/golang/protobuf/ptypes/empty"
 )
@@ -383,9 +401,9 @@ import (
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -445,9 +463,9 @@ import (
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -546,7 +564,11 @@ type Kratos struct {
 go 1.12
 
 require (
+<<<<<<< HEAD
+	github.com/bilibili/kratos v0.2.2
+=======
 	github.com/fever365/kratos v0.2.2
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 	github.com/gogo/protobuf v1.2.1
 	github.com/golang/protobuf v1.3.2
 	golang.org/x/net v0.0.0-20190628185345-da137c7871d7
@@ -558,8 +580,13 @@ require (
 import (
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/service"
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden"
+=======
 	"github.com/fever365/kratos/pkg/conf/paladin"
 	"github.com/fever365/kratos/pkg/net/rpc/warden"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 // New new a grpc server.

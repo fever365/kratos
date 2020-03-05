@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fever365/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/ecode"
 )
 
 var testConf = &Config{

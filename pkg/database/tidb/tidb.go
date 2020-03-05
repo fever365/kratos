@@ -1,9 +1,15 @@
 package tidb
 
 import (
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
+	"github.com/bilibili/kratos/pkg/time"
+=======
 	"github.com/fever365/kratos/pkg/log"
 	"github.com/fever365/kratos/pkg/net/netutil/breaker"
 	"github.com/fever365/kratos/pkg/time"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 
 	// database driver
 	_ "github.com/go-sql-driver/mysql"

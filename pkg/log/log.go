@@ -8,8 +8,13 @@ import (
 	"os"
 	"strconv"
 
+<<<<<<< HEAD
+	"github.com/bilibili/kratos/pkg/conf/env"
+	"github.com/bilibili/kratos/pkg/stat/metric"
+=======
 	"github.com/fever365/kratos/pkg/conf/env"
 	"github.com/fever365/kratos/pkg/stat/metric"
+>>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 )
 
 // Config log config.

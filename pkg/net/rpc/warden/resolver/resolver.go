@@ -11,10 +11,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/naming"
-	wmeta "github.com/fever365/kratos/pkg/net/rpc/warden/internal/metadata"
+	"github.com/bilibili/kratos/pkg/conf/env"
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/naming"
+	wmeta "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/metadata"
 
 	farm "github.com/dgryski/go-farm"
 	"github.com/pkg/errors"

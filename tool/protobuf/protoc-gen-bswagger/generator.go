@@ -6,11 +6,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
-	"github.com/fever365/kratos/tool/protobuf/pkg/generator"
-	"github.com/fever365/kratos/tool/protobuf/pkg/naming"
-	"github.com/fever365/kratos/tool/protobuf/pkg/tag"
-	"github.com/fever365/kratos/tool/protobuf/pkg/typemap"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/gen"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/generator"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/naming"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/tag"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/typemap"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 )
