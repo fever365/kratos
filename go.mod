@@ -68,4 +68,3 @@ require (
 	gopkg.in/go-playground/validator.v9 v9.29.1
 	gopkg.in/yaml.v2 v2.2.2
 )
-replace github.com/fever365/kratos => github.com/fever365/kratos v0.2.17
