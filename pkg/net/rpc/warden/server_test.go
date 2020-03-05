@@ -13,13 +13,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	nmd "github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	pb "github.com/fever365/kratos/pkg/net/rpc/warden/internal/proto/testproto"
-	xtrace "github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/log"
+	nmd "github.com/bilibili/kratos/pkg/net/metadata"
+	"github.com/bilibili/kratos/pkg/net/netutil/breaker"
+	pb "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/proto/testproto"
+	xtrace "github.com/bilibili/kratos/pkg/net/trace"
+	xtime "github.com/bilibili/kratos/pkg/time"
 
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
@@ -130,7 +130,12 @@ func (s *helloServer) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.He
 		}
 		reply := &pb.HelloReply{Message: "status", Success: true}
 		return reply, nil
+	} else if in.Name == "time_opt" {
+		time.Sleep(time.Second)
+		reply := &pb.HelloReply{Message: "status", Success: true}
+		return reply, nil
 	}
+
 	return &pb.HelloReply{Message: "Hello " + in.Name, Success: true}, nil
 }
 
@@ -201,6 +206,7 @@ func Test_Warden(t *testing.T) {
 	testValidation(t)
 	testServerRecovery(t)
 	testClientRecovery(t)
+	testTimeoutOpt(t)
 	testErrorDetail(t)
 	testECodeStatus(t)
 	testColorPass(t)
@@ -214,8 +220,28 @@ func Test_Warden(t *testing.T) {
 
 func testValidation(t *testing.T) {
 	_, err := runClient(context.Background(), &clientConfig, t, "", 0)
-	if !ecode.RequestErr.Equal(err) {
+	if !ecode.EqualError(ecode.RequestErr, err) {
 		t.Fatalf("testValidation should return ecode.RequestErr,but is %v", err)
+	}
+}
+
+func testTimeoutOpt(t *testing.T) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond*100)
+	defer cancel()
+	client := NewClient(&clientConfig)
+	conn, err := client.Dial(ctx, "127.0.0.1:8080")
+	if err != nil {
+		t.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+	c := pb.NewGreeterClient(conn)
+	start := time.Now()
+	_, err = c.SayHello(ctx, &pb.HelloRequest{Name: "time_opt", Age: 0}, WithTimeoutCallOption(time.Millisecond*500))
+	if err == nil {
+		t.Fatalf("recovery must return error")
+	}
+	if time.Since(start) < time.Millisecond*400 {
+		t.Fatalf("client timeout must be greater than 400 Milliseconds;err:=%v", err)
 	}
 }
 
@@ -270,7 +296,7 @@ func testBreaker(t *testing.T) {
 	for i := 0; i < 50; i++ {
 		_, err := c.SayHello(context.Background(), &pb.HelloRequest{Name: "breaker_test"})
 		if err != nil {
-			if ecode.ServiceUnavailable.Equal(err) {
+			if ecode.EqualError(ecode.ServiceUnavailable, err) {
 				return
 			}
 		}
@@ -308,7 +334,7 @@ func testLinkTimeout(t *testing.T) {
 	if err == nil {
 		t.Fatalf("testLinkTimeout must return error")
 	}
-	if !ecode.Deadline.Equal(err) {
+	if !ecode.EqualError(ecode.Deadline, err) {
 		t.Fatalf("testLinkTimeout must return error RPCDeadline,err:%v", err)
 	}
 
@@ -318,7 +344,7 @@ func testClientConfig(t *testing.T) {
 	if err == nil {
 		t.Fatalf("testLinkTimeout must return error")
 	}
-	if !ecode.Deadline.Equal(err) {
+	if !ecode.EqualError(ecode.Deadline, err) {
 		t.Fatalf("testLinkTimeout must return error RPCDeadline,err:%v", err)
 	}
 }
@@ -371,7 +397,7 @@ func testClientRecovery(t *testing.T) {
 		t.Fatalf("recovery must return ecode error")
 	}
 
-	if !ecode.ServerErr.Equal(e) {
+	if !ecode.EqualError(ecode.ServerErr, e) {
 		t.Fatalf("recovery must return ecode.RPCClientErr")
 	}
 }

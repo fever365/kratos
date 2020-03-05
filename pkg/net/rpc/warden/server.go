@@ -10,19 +10,20 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fever365/kratos/pkg/conf/dsn"
-	"github.com/fever365/kratos/pkg/log"
-	nmd "github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/ratelimiter"
-	"github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/conf/dsn"
+	"github.com/bilibili/kratos/pkg/log"
+	nmd "github.com/bilibili/kratos/pkg/net/metadata"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/ratelimiter"
+	"github.com/bilibili/kratos/pkg/net/trace"
+	xtime "github.com/bilibili/kratos/pkg/time"
 
 	//this package is for json format response
-	_ "github.com/fever365/kratos/pkg/net/rpc/warden/internal/encoding/json"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/internal/status"
+	_ "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/encoding/json"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden/internal/status"
 
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
+	_ "google.golang.org/grpc/encoding/gzip" // NOTE: use grpc gzip by header grpc-accept-encoding
 	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
@@ -110,6 +111,7 @@ func (s *Server) handle() grpc.UnaryServerInterceptor {
 		var t trace.Trace
 		cmd := nmd.MD{}
 		if gmd, ok := metadata.FromIncomingContext(ctx); ok {
+			t, _ = trace.Extract(trace.GRPCFormat, gmd)
 			for key, vals := range gmd {
 				if nmd.IsIncomingKey(key) {
 					cmd[key] = vals[0]
@@ -304,6 +306,7 @@ func (s *Server) Start() (*Server, error) {
 	if err != nil {
 		return nil, err
 	}
+	log.Info("warden: start grpc listen addr: %v", lis.Addr())
 	reflection.Register(s.server)
 	go func() {
 		if err := s.Serve(lis); err != nil {

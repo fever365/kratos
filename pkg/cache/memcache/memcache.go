@@ -3,8 +3,8 @@ package memcache
 import (
 	"context"
 
-	"github.com/fever365/kratos/pkg/container/pool"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/container/pool"
+	xtime "github.com/bilibili/kratos/pkg/time"
 )
 
 const (

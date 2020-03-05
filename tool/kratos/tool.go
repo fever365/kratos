@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	toolDoc = "https://github.com/fever365/kratos/blob/master/doc/wiki-cn/kratos-tool.md"
+	toolDoc = "https://github.com/bilibili/kratos/blob/master/doc/wiki-cn/kratos-tool.md"
 )
 
 func toolAction(c *cli.Context) (err error) {
@@ -187,7 +187,7 @@ func (t Tool) installed() bool {
 
 func gopath() (gp string) {
 	gopaths := strings.Split(os.Getenv("GOPATH"), ":")
-	if len(gopaths) == 1 {
+	if len(gopaths) == 1 && gopaths[0] != "" {
 		return gopaths[0]
 	}
 	pwd, err := os.Getwd()
@@ -199,6 +199,9 @@ func gopath() (gp string) {
 		return
 	}
 	for _, gopath := range gopaths {
+		if gopath == "" {
+			continue
+		}
 		absgp, err := filepath.Abs(gopath)
 		if err != nil {
 			return

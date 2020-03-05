@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fever365/kratos/pkg/conf/env"
+	"github.com/bilibili/kratos/pkg/conf/env"
 
-	nmd "github.com/fever365/kratos/pkg/net/metadata"
-	wmeta "github.com/fever365/kratos/pkg/net/rpc/warden/internal/metadata"
+	nmd "github.com/bilibili/kratos/pkg/net/metadata"
+	wmeta "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/metadata"
 
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/codes"
@@ -30,12 +30,12 @@ var extraDelay int64
 var extraWeight uint64
 
 func init() {
-	flag.IntVar(&serverNum, "snum", 5, "-snum 6")
-	flag.IntVar(&cliNum, "cnum", 5, "-cnum 12")
-	flag.IntVar(&concurrency, "concurrency", 5, "-cc 10")
+	flag.IntVar(&serverNum, "snum", 6, "-snum 6")
+	flag.IntVar(&cliNum, "cnum", 12, "-cnum 12")
+	flag.IntVar(&concurrency, "concurrency", 10, "-cc 10")
 	flag.Int64Var(&extraLoad, "exload", 3, "-exload 3")
-	flag.Int64Var(&extraDelay, "exdelay", 0, "-exdelay 250")
-	flag.Uint64Var(&extraWeight, "extraWeight", 0, "-exdelay 50")
+	flag.Int64Var(&extraDelay, "exdelay", 250, "-exdelay 250")
+	flag.Uint64Var(&extraWeight, "extraWeight", 50, "-exdelay 50")
 }
 
 type testSubConn struct {

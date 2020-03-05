@@ -72,10 +72,10 @@ import (
 	"syscall"
 	"time"
 
-	"{{.Name}}/internal/server/http"
-	"{{.Name}}/internal/service"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
+	"{{.ModuleName}}/internal/server/http"
+	"{{.ModuleName}}/internal/service"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
 )
 
 func main() {
@@ -122,11 +122,11 @@ import (
 	"syscall"
 	"time"
 
-	"{{.Name}}/internal/server/grpc"
-	"{{.Name}}/internal/server/http"
-	"{{.Name}}/internal/service"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
+	"{{.ModuleName}}/internal/server/grpc"
+	"{{.ModuleName}}/internal/server/http"
+	"{{.ModuleName}}/internal/service"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
 )
 
 func main() {
@@ -142,8 +142,7 @@ func main() {
 	httpSrv := http.New(svc)
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
-	for {
-		s := <-c
+	for s := range c {
 		log.Info("get a signal %s", s.String())
 		switch s {
 		case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
@@ -181,12 +180,12 @@ import (
 	"context"
 	"time"
 
-	"github.com/fever365/kratos/pkg/cache/memcache"
-	"github.com/fever365/kratos/pkg/cache/redis"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/database/sql"
-	"github.com/fever365/kratos/pkg/log"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/cache/memcache"
+	"github.com/bilibili/kratos/pkg/cache/redis"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/database/sql"
+	"github.com/bilibili/kratos/pkg/log"
+	xtime "github.com/bilibili/kratos/pkg/time"
 )
 
 // Dao dao interface
@@ -284,8 +283,8 @@ func (d *dao) pingRedis(ctx context.Context) (err error) {
 import (
 	"context"
 
-	"{{.Name}}/internal/dao"
-	"github.com/fever365/kratos/pkg/conf/paladin"
+	"{{.ModuleName}}/internal/dao"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
 )
 
 // Service service.
@@ -324,9 +323,9 @@ import (
 	"context"
 	"fmt"
 
-	pb "{{.Name}}/api"
-	"{{.Name}}/internal/dao"
-	"github.com/fever365/kratos/pkg/conf/paladin"
+	pb "{{.ModuleName}}/api"
+	"{{.ModuleName}}/internal/dao"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
 
 	"github.com/golang/protobuf/ptypes/empty"
 )
@@ -381,12 +380,12 @@ func (s *Service) Close() {
 import (
 	"net/http"
 
-	"{{.Name}}/internal/model"
-	"{{.Name}}/internal/service"
+	"{{.ModuleName}}/internal/model"
+	"{{.ModuleName}}/internal/service"
 
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -442,13 +441,13 @@ func howToStart(c *bm.Context) {
 import (
 	"net/http"
 
-	pb "{{.Name}}/api"
-	"{{.Name}}/internal/model"
-	"{{.Name}}/internal/service"
+	pb "{{.ModuleName}}/api"
+	"{{.ModuleName}}/internal/model"
+	"{{.ModuleName}}/internal/service"
 
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/log"
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/log"
+	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -542,41 +541,25 @@ message HelloResp {
 type Kratos struct {
 	Hello string
 }`
-	_tplGoMod = `module {{.Name}}
+	_tplGoMod = `module {{.ModuleName}}
 
 go 1.12
 
 require (
-	github.com/fever365/kratos v0.1.0
+	github.com/bilibili/kratos v0.2.2
 	github.com/gogo/protobuf v1.2.1
-	github.com/golang/protobuf v1.3.1
-	golang.org/x/net v0.0.0-20190420063019-afa5a82059c6
-	google.golang.org/grpc v1.20.1
-)
-
-replace (
-	cloud.google.com/go => github.com/googleapis/google-cloud-go v0.26.0
-	golang.org/x/crypto => github.com/golang/crypto v0.0.0-20190123085648-057139ce5d2b
-	golang.org/x/lint => github.com/golang/lint v0.0.0-20181026193005-c67002cb31c3
-	golang.org/x/net => github.com/golang/net v0.0.0-20190420063019-afa5a82059c6
-	golang.org/x/oauth2 => github.com/golang/oauth2 v0.0.0-20180821212333-d2e6202438be
-	golang.org/x/sync => github.com/golang/sync v0.0.0-20181108010431-42b317875d0f
-	golang.org/x/sys => github.com/golang/sys v0.0.0-20180905080454-ebe1bf3edb33
-	golang.org/x/text => github.com/golang/text v0.3.0
-	golang.org/x/time => github.com/golang/time v0.0.0-20190308202827-9d24e82272b4
-	golang.org/x/tools => github.com/golang/tools v0.0.0-20190328211700-ab21143f2384
-	google.golang.org/appengine => github.com/golang/appengine v1.1.0
-	google.golang.org/genproto => github.com/google/go-genproto v0.0.0-20180817151627-c66870c02cf8
-	google.golang.org/grpc => github.com/grpc/grpc-go v1.20.1
+	github.com/golang/protobuf v1.3.2
+	golang.org/x/net v0.0.0-20190628185345-da137c7871d7
+	google.golang.org/grpc v1.22.0
 )
 `
 	_tplGRPCServer = `package grpc
 
 import (
-	pb "{{.Name}}/api"
-	"{{.Name}}/internal/service"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	pb "{{.ModuleName}}/api"
+	"{{.ModuleName}}/internal/service"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden"
 )
 
 // New new a grpc server.
@@ -597,5 +580,9 @@ func New(svc *service.Service) *warden.Server {
 	}
 	return ws
 }
+`
+	_tplGogen = `package api
+
+//go:generate kratos tool protoc --swagger --grpc --bm api.proto
 `
 )

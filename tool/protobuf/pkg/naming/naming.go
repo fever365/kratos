@@ -2,10 +2,11 @@ package naming
 
 import (
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 
-	"github.com/fever365/kratos/tool/protobuf/pkg/utils"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/utils"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 	"github.com/pkg/errors"
 	"github.com/siddontang/go/ioutil2"
@@ -23,6 +24,16 @@ func GetVersionPrefix(pkg string) string {
 		return pkg
 	}
 	return ""
+}
+
+// GenFileName returns the output name for the generated Go file.
+func GenFileName(f *descriptor.FileDescriptorProto, suffix string) string {
+	name := *f.Name
+	if ext := path.Ext(name); ext == ".pb" || ext == ".proto" || ext == ".protodevel" {
+		name = name[:len(name)-len(ext)]
+	}
+	name += suffix
+	return name
 }
 
 func ServiceName(service *descriptor.ServiceDescriptorProto) string {

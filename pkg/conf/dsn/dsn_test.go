@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	xtime "github.com/fever365/kratos/pkg/time"
+	xtime "github.com/bilibili/kratos/pkg/time"
 )
 
 type config struct {

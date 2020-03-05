@@ -3,23 +3,26 @@ package breaker
 import (
 	"math"
 	"math/rand"
+	"sync"
 	"sync/atomic"
 	"time"
 
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/stat/metric"
+	"github.com/bilibili/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/stat/metric"
 )
 
 // sreBreaker is a sre CircuitBreaker pattern.
 type sreBreaker struct {
 	stat metric.RollingCounter
+	r    *rand.Rand
+	// rand.New(...) returns a non thread safe object
+	randLock sync.Mutex
 
 	k       float64
 	request int64
 
 	state int32
-	r     *rand.Rand
 }
 
 func newSRE(c *Config) Breaker {
@@ -69,14 +72,14 @@ func (b *sreBreaker) Allow() error {
 		atomic.CompareAndSwapInt32(&b.state, StateClosed, StateOpen)
 	}
 	dr := math.Max(0, (float64(total)-k)/float64(total+1))
-	rr := b.r.Float64()
+	drop := b.trueOnProba(dr)
 	if log.V(5) {
-		log.Info("breaker: drop ratio: %f, real rand: %f, drop: %v", dr, rr, dr > rr)
+		log.Info("breaker: drop ratio: %f, drop: %t", dr, drop)
 	}
-	if dr <= rr {
-		return nil
+	if drop {
+		return ecode.ServiceUnavailable
 	}
-	return ecode.ServiceUnavailable
+	return nil
 }
 
 func (b *sreBreaker) MarkSuccess() {
@@ -87,4 +90,11 @@ func (b *sreBreaker) MarkFailed() {
 	// NOTE: when client reject requets locally, continue add counter let the
 	// drop ratio higher.
 	b.stat.Add(0)
+}
+
+func (b *sreBreaker) trueOnProba(proba float64) (truth bool) {
+	b.randLock.Lock()
+	truth = b.r.Float64() < proba
+	b.randLock.Unlock()
+	return
 }

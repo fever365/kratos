@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
-	"github.com/fever365/kratos/tool/protobuf/pkg/generator"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/gen"
+	"github.com/bilibili/kratos/tool/protobuf/pkg/generator"
 )
 
 func main() {

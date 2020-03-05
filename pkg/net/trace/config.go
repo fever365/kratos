@@ -8,9 +8,9 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/fever365/kratos/pkg/conf/dsn"
-	"github.com/fever365/kratos/pkg/conf/env"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/bilibili/kratos/pkg/conf/dsn"
+	"github.com/bilibili/kratos/pkg/conf/env"
+	xtime "github.com/bilibili/kratos/pkg/time"
 )
 
 var _traceDSN = "unixgram:///var/run/dapper-collect/dapper-collect.sock"
@@ -58,7 +58,7 @@ func TracerFromEnvFlag() (Tracer, error) {
 		return nil, err
 	}
 	report := newReport(cfg.Network, cfg.Addr, time.Duration(cfg.Timeout), cfg.ProtocolVersion)
-	return newTracer(env.AppID, report, cfg), nil
+	return NewTracer(env.AppID, report, cfg.DisableSample), nil
 }
 
 // Init init trace report.
@@ -71,5 +71,5 @@ func Init(cfg *Config) {
 		}
 	}
 	report := newReport(cfg.Network, cfg.Addr, time.Duration(cfg.Timeout), cfg.ProtocolVersion)
-	SetGlobalTracer(newTracer(env.AppID, report, cfg))
+	SetGlobalTracer(NewTracer(env.AppID, report, cfg.DisableSample))
 }

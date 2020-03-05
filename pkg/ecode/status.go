@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/fever365/kratos/pkg/ecode/types"
+	"github.com/bilibili/kratos/pkg/ecode/types"
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes"
 )
@@ -72,12 +72,6 @@ func (s *Status) WithDetails(pbs ...proto.Message) (*Status, error) {
 		s.s.Details = append(s.s.Details, anyMsg)
 	}
 	return s, nil
-}
-
-// Equal for compatible.
-// Deprecated: please use ecode.EqualError.
-func (s *Status) Equal(err error) bool {
-	return EqualError(s, err)
 }
 
 // Proto return origin protobuf message

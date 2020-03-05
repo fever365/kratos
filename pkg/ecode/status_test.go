@@ -7,7 +7,7 @@ import (
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/fever365/kratos/pkg/ecode/types"
+	"github.com/bilibili/kratos/pkg/ecode/types"
 )
 
 func TestEqual(t *testing.T) {
@@ -16,9 +16,6 @@ func TestEqual(t *testing.T) {
 		err2 = Errorf(RequestErr, "test")
 	)
 	assert.Equal(t, err1, err2)
-	assert.True(t, OK.Equal(nil))
-	assert.True(t, err1.Equal(err2))
-	assert.False(t, err1.Equal(nil))
 	assert.True(t, Equal(nil, nil))
 }
 

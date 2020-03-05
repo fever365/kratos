@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/metadata"
+	"github.com/bilibili/kratos/pkg/ecode"
+	"github.com/bilibili/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/net/metadata"
 )
 
 // Logger is logger  middleware
@@ -34,8 +34,10 @@ func Logger() HandlerFunc {
 			caller = noUser
 		}
 
-		stats.Incr(caller, path[1:], strconv.FormatInt(int64(cerr.Code()), 10))
-		stats.Timing(caller, int64(dt/time.Millisecond), path[1:])
+		if len(c.RoutePath) > 0 {
+			_metricServerReqCodeTotal.Inc(c.RoutePath[1:], caller, strconv.FormatInt(int64(cerr.Code()), 10))
+			_metricServerReqDur.Observe(int64(dt/time.Millisecond), c.RoutePath[1:], caller)
+		}
 
 		lf := log.Infov
 		errmsg := ""

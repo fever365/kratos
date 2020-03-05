@@ -9,7 +9,7 @@ import (
 	"github.com/tsuna/gohbase"
 	"github.com/tsuna/gohbase/hrpc"
 
-	"github.com/fever365/kratos/pkg/log"
+	"github.com/bilibili/kratos/pkg/log"
 )
 
 // HookFunc hook function call before every method and hook return function will call after finish.
@@ -44,7 +44,7 @@ func (c *Client) invokeHook(ctx context.Context, call hrpc.Call, customName stri
 func NewClient(config *Config, options ...gohbase.Option) *Client {
 	rawcli := NewRawClient(config, options...)
 	rawcli.AddHook(NewSlowLogHook(250 * time.Millisecond))
-	rawcli.AddHook(MetricsHook(nil))
+	rawcli.AddHook(MetricsHook(config))
 	rawcli.AddHook(TraceHook("database/hbase", strings.Join(config.Zookeeper.Addrs, ",")))
 	return rawcli
 }

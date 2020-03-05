@@ -3,18 +3,18 @@
 快速使用kratos项目，可以使用`kratos`工具，如下：
 
 ```shell
-go get -u github.com/fever365/kratos/tool/kratos
+go get -u github.com/bilibili/kratos/tool/kratos
 cd $GOPATH/src
 kratos new kratos-demo
 ```
 
-根据提示可以快速创建项目，如[kratos-demo](https://github.com/fever365/kratos-demo)就是通过工具创建生成。目录结构如下：
+根据提示可以快速创建项目，如[kratos-demo](https://github.com/bilibili/kratos-demo)就是通过工具创建生成。目录结构如下：
 
 ```
 ├── CHANGELOG.md           # CHANGELOG
 ├── CONTRIBUTORS.md        # CONTRIBUTORS
 ├── README.md              # README
-├── api                    # api目录为对外保留的proto文件及生成的pb.go文件，注：需要"--grpc"参数
+├── api                    # api目录为对外保留的proto文件及生成的pb.go文件，注：需要"--proto"参数
 │   ├── api.proto
 │   ├── api.pb.go          # 通过go generate生成的pb.go文件
 │   └── generate.go

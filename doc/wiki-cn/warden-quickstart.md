@@ -1,6 +1,10 @@
 # 准备工作
 
-推荐使用[kratos工具](kratos-tool.md)快速生成带`--grpc`的项目，如我们生成一个叫`kratos-demo`的项目。
+推荐使用[kratos工具](kratos-tool.md)快速生成带`grpc`的项目，如我们生成一个叫`kratos-demo`的项目。
+
+```
+kratos new kratos-demo --proto
+```
 
 # pb文件
 
@@ -31,8 +35,8 @@ package grpc
 import (
 	pb "kratos-demo/api"
 	"kratos-demo/internal/service"
-	"github.com/fever365/kratos/pkg/conf/paladin"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden"
 )
 
 // New new a grpc server.
@@ -95,7 +99,7 @@ package dao
 import (
 	"context"
 
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden"
 
 	"google.golang.org/grpc"
 )
@@ -127,7 +131,7 @@ package dao
 import(
 	demoapi "kratos-demo/api"
 	grpcempty "github.com/golang/protobuf/ptypes/empty"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
+	"github.com/bilibili/kratos/pkg/net/rpc/warden"
 
 	"github.com/pkg/errors"
 )
