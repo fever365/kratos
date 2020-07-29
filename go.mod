@@ -33,10 +33,12 @@ require (
 	github.com/urfave/cli/v2 v2.2.0
 	go.etcd.io/etcd v3.3.22+incompatible
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381
+	golang.org/x/sys v0.0.0-20200728102440-3e129f6d46b1 // indirect
+	golang.org/x/text v0.3.3 // indirect
 	golang.org/x/tools v0.0.0-20200729041821-df70183b1872
 	google.golang.org/genproto v0.0.0-20200729003335-053ba62fc06f
-	google.golang.org/grpc v1.30.0
-	google.golang.org/grpc/examples v0.0.0-20200728194956-1c32b02682df // indirect
+	google.golang.org/grpc v1.28.1
+	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0
 	gopkg.in/yaml.v2 v2.3.0
