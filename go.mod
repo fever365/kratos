@@ -64,3 +64,5 @@ require (
 	gopkg.in/yaml.v2 v2.2.8
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
+
+replace github.com/go-kratos/kratos => github.com/fever365/kratos
