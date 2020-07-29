@@ -17,17 +17,10 @@ import (
 	"sync"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	xtime "github.com/fever365/kratos/pkg/time"
-=======
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	xtime "github.com/fever365/kratos/pkg/time"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/conf/env"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
+	"github.com/go-kratos/kratos/pkg/net/netutil/breaker"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 
 	"github.com/gogo/protobuf/proto"
 	pkgerr "github.com/pkg/errors"
@@ -220,16 +213,16 @@ func (client *Client) Raw(c context.Context, req *xhttp.Request, v ...string) (b
 	brk := client.breaker.Get(uri)
 	if err = brk.Allow(); err != nil {
 		code = "breaker"
-		_metricClientReqCodeTotal.Inc(uri, code)
+		_metricClientReqCodeTotal.Inc(uri, req.Method, code)
 		return
 	}
 	defer client.onBreaker(brk, &err)
 	// stat
 	now := time.Now()
 	defer func() {
-		_metricClientReqDur.Observe(int64(time.Since(now)/time.Millisecond), uri)
+		_metricClientReqDur.Observe(int64(time.Since(now)/time.Millisecond), uri, req.Method)
 		if code != "" {
-			_metricClientReqCodeTotal.Inc(uri, code)
+			_metricClientReqCodeTotal.Inc(uri, req.Method, code)
 		}
 	}()
 	// get config

@@ -9,11 +9,7 @@ import (
 	"github.com/tsuna/gohbase"
 	"github.com/tsuna/gohbase/hrpc"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/stat/metric"
-=======
-	"github.com/fever365/kratos/pkg/stat/metric"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/stat/metric"
 )
 
 const namespace = "hbase_client"
@@ -45,8 +41,8 @@ func codeFromErr(err error) string {
 		code = "connot_find_region"
 	case gohbase.TableNotFound:
 		code = "table_not_found"
-	//case gohbase.ErrRegionUnavailable:
-	//	code = "region_unavailable"
+		//case gohbase.ErrRegionUnavailable:
+		//	code = "region_unavailable"
 	}
 	return code
 }

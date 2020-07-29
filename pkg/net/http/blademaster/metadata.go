@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/criticality"
-	"github.com/fever365/kratos/pkg/net/metadata"
+	"github.com/go-kratos/kratos/pkg/conf/env"
+	"github.com/go-kratos/kratos/pkg/log"
+	"github.com/go-kratos/kratos/pkg/net/criticality"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
 
 	"github.com/pkg/errors"
 )

@@ -3,15 +3,37 @@ package pipeline
 import (
 	"context"
 	"errors"
+	"strconv"
 	"sync"
 	"time"
 
-	"github.com/fever365/kratos/pkg/net/metadata"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
+	"github.com/go-kratos/kratos/pkg/stat/metric"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 )
 
 // ErrFull channel full error
 var ErrFull = errors.New("channel full")
+
+const _metricNamespace = "sync"
+const _metricSubSystem = "pipeline"
+
+var (
+	_metricCount = metric.NewCounterVec(&metric.CounterVecOpts{
+		Namespace: _metricNamespace,
+		Subsystem: _metricSubSystem,
+		Name:      "process_count",
+		Help:      "process count",
+		Labels:    []string{"name", "chan"},
+	})
+	_metricChanLen = metric.NewGaugeVec(&metric.GaugeVecOpts{
+		Namespace: _metricNamespace,
+		Subsystem: _metricSubSystem,
+		Name:      "chan_len",
+		Help:      "channel length",
+		Labels:    []string{"name", "chan"},
+	})
+)
 
 type message struct {
 	key   string
@@ -26,6 +48,7 @@ type Pipeline struct {
 	mirrorChans []chan *message
 	config      *Config
 	wait        sync.WaitGroup
+	name        string
 }
 
 // Config Pipeline config
@@ -38,8 +61,8 @@ type Config struct {
 	Buffer int
 	// Worker channel number
 	Worker int
-	// Smooth smoothing interval
-	Smooth bool
+	// Name use for metrics
+	Name string
 }
 
 func (c *Config) fix() {
@@ -55,6 +78,9 @@ func (c *Config) fix() {
 	if c.Worker <= 0 {
 		c.Worker = 10
 	}
+	if c.Name == "" {
+		c.Name = "anonymous"
+	}
 }
 
 // NewPipeline new pipline
@@ -67,6 +93,7 @@ func NewPipeline(config *Config) (res *Pipeline) {
 		chans:       make([]chan *message, config.Worker),
 		mirrorChans: make([]chan *message, config.Worker),
 		config:      config,
+		name:        config.Name,
 	}
 	for i := 0; i < config.Worker; i++ {
 		res.chans[i] = make(chan *message, config.Buffer)
@@ -95,9 +122,14 @@ func (p *Pipeline) Start() {
 }
 
 // SyncAdd sync add a value to channal, channel shard in split method
-func (p *Pipeline) SyncAdd(c context.Context, key string, value interface{}) {
+func (p *Pipeline) SyncAdd(c context.Context, key string, value interface{}) (err error) {
 	ch, msg := p.add(c, key, value)
-	ch <- msg
+	select {
+	case ch <- msg:
+	case <-c.Done():
+		err = c.Err()
+	}
+	return
 }
 
 // Add async add a value to channal, channel shard in split method
@@ -137,17 +169,18 @@ func (p *Pipeline) Close() (err error) {
 func (p *Pipeline) mergeproc(mirror bool, index int, ch <-chan *message) {
 	defer p.wait.Done()
 	var (
-		m         *message
-		vals      = make(map[string][]interface{}, p.config.MaxSize)
-		closed    bool
-		count     int
-		inteval   = p.config.Interval
-		oldTicker = true
+		m       *message
+		vals    = make(map[string][]interface{}, p.config.MaxSize)
+		closed  bool
+		count   int
+		inteval = p.config.Interval
+		timeout = false
 	)
-	if p.config.Smooth && index > 0 {
+	if index > 0 {
 		inteval = xtime.Duration(int64(index) * (int64(p.config.Interval) / int64(p.config.Worker)))
 	}
-	ticker := time.NewTicker(time.Duration(inteval))
+	timer := time.NewTimer(time.Duration(inteval))
+	defer timer.Stop()
 	for {
 		select {
 		case m = <-ch:
@@ -161,25 +194,30 @@ func (p *Pipeline) mergeproc(mirror bool, index int, ch <-chan *message) {
 				break
 			}
 			continue
-		case <-ticker.C:
-			if p.config.Smooth && oldTicker {
-				ticker.Stop()
-				ticker = time.NewTicker(time.Duration(p.config.Interval))
-				oldTicker = false
-			}
+		case <-timer.C:
+			timeout = true
 		}
+		name := p.name
+		process := count
 		if len(vals) > 0 {
 			ctx := context.Background()
 			if mirror {
 				ctx = metadata.NewContext(ctx, metadata.MD{metadata.Mirror: "1"})
+				name = "mirror_" + name
 			}
 			p.Do(ctx, index, vals)
 			vals = make(map[string][]interface{}, p.config.MaxSize)
 			count = 0
 		}
+		_metricChanLen.Set(float64(len(ch)), name, strconv.Itoa(index))
+		_metricCount.Add(float64(process), name, strconv.Itoa(index))
 		if closed {
-			ticker.Stop()
 			return
 		}
+		if !timer.Stop() && !timeout {
+			<-timer.C
+			timeout = false
+		}
+		timer.Reset(time.Duration(p.config.Interval))
 	}
 }

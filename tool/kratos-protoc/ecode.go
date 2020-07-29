@@ -2,16 +2,10 @@ package main
 
 import (
 	"os/exec"
-
-	"github.com/urfave/cli"
 )
 
 const (
-<<<<<<< HEAD
-	_getEcodeGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode"
-=======
-	_getEcodeGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	_getEcodeGen = "go get -u github.com/go-kratos/kratos/tool/protobuf/protoc-gen-ecode"
 	_ecodeProtoc = "protoc --proto_path=%s --proto_path=%s --proto_path=%s --ecode_out=:."
 )
 
@@ -24,6 +18,6 @@ func installEcodeGen() error {
 	return nil
 }
 
-func genEcode(ctx *cli.Context) error {
-	return generate(ctx, _ecodeProtoc)
+func genEcode(files []string) error {
+	return generate(_ecodeProtoc, files)
 }

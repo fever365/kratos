@@ -9,15 +9,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/peer"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/metadata"
-=======
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/metadata"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/ecode"
+	"github.com/go-kratos/kratos/pkg/log"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
 )
 
 // Warden Log Flag

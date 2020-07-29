@@ -1,19 +1,27 @@
 package fanout
 
-<<<<<<< HEAD
-import "github.com/fever365/kratos/pkg/stat/metric"
-=======
-import "github.com/fever365/kratos/pkg/stat/metric"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+import (
+	"github.com/go-kratos/kratos/pkg/stat/metric"
+)
 
-const namespace = "sync"
+const (
+	_metricNamespace = "sync"
+	_metricSubSystem = "pipeline_fanout"
+)
 
 var (
 	_metricChanSize = metric.NewGaugeVec(&metric.GaugeVecOpts{
-		Namespace: namespace,
-		Subsystem: "pipeline_fanout",
-		Name:      "current",
+		Namespace: _metricNamespace,
+		Subsystem: _metricSubSystem,
+		Name:      "chan_len",
 		Help:      "sync pipeline fanout current channel size.",
+		Labels:    []string{"name"},
+	})
+	_metricCount = metric.NewCounterVec(&metric.CounterVecOpts{
+		Namespace: _metricNamespace,
+		Subsystem: _metricSubSystem,
+		Name:      "process_count",
+		Help:      "process count",
 		Labels:    []string{"name"},
 	})
 )

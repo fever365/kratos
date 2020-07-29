@@ -5,15 +5,9 @@ import (
 	"fmt"
 	"os"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
-	"github.com/fever365/kratos/tool/protobuf/pkg/generator"
-	ecodegen "github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode/generator"
-=======
-	"github.com/fever365/kratos/tool/protobuf/pkg/gen"
-	"github.com/fever365/kratos/tool/protobuf/pkg/generator"
-	ecodegen "github.com/fever365/kratos/tool/protobuf/protoc-gen-ecode/generator"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/tool/protobuf/pkg/gen"
+	"github.com/go-kratos/kratos/tool/protobuf/pkg/generator"
+	ecodegen "github.com/go-kratos/kratos/tool/protobuf/protoc-gen-ecode/generator"
 )
 
 func main() {

@@ -3,8 +3,8 @@ package dsn_test
 import (
 	"log"
 
-	"github.com/fever365/kratos/pkg/conf/dsn"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/go-kratos/kratos/pkg/conf/dsn"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 )
 
 // Config struct

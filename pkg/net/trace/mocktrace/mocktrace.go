@@ -1,7 +1,7 @@
 package mocktrace
 
 import (
-	"github.com/fever365/kratos/pkg/net/trace"
+	"github.com/go-kratos/kratos/pkg/net/trace"
 )
 
 // MockTrace .

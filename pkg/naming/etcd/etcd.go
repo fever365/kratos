@@ -12,13 +12,8 @@ import (
 	"sync/atomic"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/naming"
-=======
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/naming"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/log"
+	"github.com/go-kratos/kratos/pkg/naming"
 	"go.etcd.io/etcd/clientv3"
 	"go.etcd.io/etcd/mvcc/mvccpb"
 	"google.golang.org/grpc"
@@ -94,6 +89,7 @@ type Resolve struct {
 	id    string
 	event chan struct{}
 	e     *EtcdBuilder
+	opt   *naming.BuildOptions
 }
 
 // New is new a etcdbuilder
@@ -124,11 +120,12 @@ func New(c *clientv3.Config) (e *EtcdBuilder, err error) {
 }
 
 // Build disovery resovler builder.
-func (e *EtcdBuilder) Build(appid string) naming.Resolver {
+func (e *EtcdBuilder) Build(appid string, opts ...naming.BuildOpt) naming.Resolver {
 	r := &Resolve{
 		id:    appid,
 		e:     e,
 		event: make(chan struct{}, 1),
+		opt:   new(naming.BuildOptions),
 	}
 	e.mutex.Lock()
 	app, ok := e.apps[appid]

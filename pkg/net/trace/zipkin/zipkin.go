@@ -2,17 +2,10 @@ package zipkin
 
 import (
 	"fmt"
-<<<<<<< HEAD
-	protogen "github.com/fever365/kratos/pkg/net/trace/proto"
+	protogen "github.com/go-kratos/kratos/pkg/net/trace/proto"
 	"time"
 
-	"github.com/fever365/kratos/pkg/net/trace"
-=======
-	protogen "github.com/fever365/kratos/pkg/net/trace/proto"
-	"time"
-
-	"github.com/fever365/kratos/pkg/net/trace"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/net/trace"
 	"github.com/openzipkin/zipkin-go/model"
 	"github.com/openzipkin/zipkin-go/reporter"
 	"github.com/openzipkin/zipkin-go/reporter/http"

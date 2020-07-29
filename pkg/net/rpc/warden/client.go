@@ -10,39 +10,24 @@ import (
 	"sync"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver/direct"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/resolver/direct"
 
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/conf/flagvar"
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/naming"
-	nmd "github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/balancer/p2c"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/internal/status"
-	"github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
-=======
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver/direct"
-
-	"github.com/fever365/kratos/pkg/conf/env"
-	"github.com/fever365/kratos/pkg/conf/flagvar"
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/naming"
-	nmd "github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/netutil/breaker"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/balancer/p2c"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/internal/status"
-	"github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/conf/env"
+	"github.com/go-kratos/kratos/pkg/conf/flagvar"
+	"github.com/go-kratos/kratos/pkg/ecode"
+	"github.com/go-kratos/kratos/pkg/naming"
+	nmd "github.com/go-kratos/kratos/pkg/net/metadata"
+	"github.com/go-kratos/kratos/pkg/net/netutil/breaker"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/balancer/p2c"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/internal/status"
+	"github.com/go-kratos/kratos/pkg/net/trace"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/keepalive"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
 	gstatus "google.golang.org/grpc/status"
@@ -290,6 +275,11 @@ func (c *Client) dial(ctx context.Context, target string, opts ...grpc.DialOptio
 	if !c.conf.NonBlock {
 		dialOptions = append(dialOptions, grpc.WithBlock())
 	}
+	dialOptions = append(dialOptions, grpc.WithKeepaliveParams(keepalive.ClientParameters{
+		Time:                time.Duration(c.conf.KeepAliveInterval),
+		Timeout:             time.Duration(c.conf.KeepAliveTimeout),
+		PermitWithoutStream: !c.conf.KeepAliveWithoutStream,
+	}))
 	dialOptions = append(dialOptions, opts...)
 
 	// init default handler

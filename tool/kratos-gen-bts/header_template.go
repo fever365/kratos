@@ -17,21 +17,16 @@ import (
 	"context"
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/cache"
-	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
-=======
-	"github.com/fever365/kratos/pkg/cache"
-	{{if .EnableBatch }}"github.com/fever365/kratos/pkg/sync/errgroup"{{end}}
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/cache"
+	{{if .EnableBatch }}"github.com/go-kratos/kratos/pkg/sync/errgroup"{{end}}
 	{{.ImportPackage}}
 NEWLINE
 	{{if .EnableSingleFlight}}	"golang.org/x/sync/singleflight" {{end}}
 )
 
-var (
-	_ _bts
-)
+{{if .UseBTS}}
+var _ _bts
+{{end }}
 {{if .EnableSingleFlight}}
 var cacheSingleFlights = [SFCOUNT]*singleflight.Group{SFINIT} 
 {{end }}

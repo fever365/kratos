@@ -5,15 +5,9 @@ import (
 	"sync/atomic"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/log"
-	limit "github.com/fever365/kratos/pkg/ratelimit"
-	"github.com/fever365/kratos/pkg/ratelimit/bbr"
-=======
-	"github.com/fever365/kratos/pkg/log"
-	limit "github.com/fever365/kratos/pkg/ratelimit"
-	"github.com/fever365/kratos/pkg/ratelimit/bbr"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/log"
+	limit "github.com/go-kratos/kratos/pkg/ratelimit"
+	"github.com/go-kratos/kratos/pkg/ratelimit/bbr"
 )
 
 // RateLimiter bbr middleware.
@@ -45,7 +39,7 @@ func (b *RateLimiter) Limit() HandlerFunc {
 		limiter := b.group.Get(uri)
 		done, err := limiter.Allow(c)
 		if err != nil {
-			_metricServerBBR.Inc(uri)
+			_metricServerBBR.Inc(uri, c.Request.Method)
 			c.JSON(nil, err)
 			c.Abort()
 			return

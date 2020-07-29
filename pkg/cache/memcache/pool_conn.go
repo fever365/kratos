@@ -6,11 +6,7 @@ import (
 	"io"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/container/pool"
-=======
-	"github.com/fever365/kratos/pkg/container/pool"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/container/pool"
 )
 
 // Pool memcache connection pool struct.

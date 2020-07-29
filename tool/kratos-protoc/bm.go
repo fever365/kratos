@@ -2,16 +2,10 @@ package main
 
 import (
 	"os/exec"
-
-	"github.com/urfave/cli"
 )
 
 const (
-<<<<<<< HEAD
-	_getBMGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-bm"
-=======
-	_getBMGen = "go get -u github.com/fever365/kratos/tool/protobuf/protoc-gen-bm"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	_getBMGen = "go get -u github.com/go-kratos/kratos/tool/protobuf/protoc-gen-bm"
 	_bmProtoc = "protoc --proto_path=%s --proto_path=%s --proto_path=%s --bm_out=:."
 )
 
@@ -24,6 +18,6 @@ func installBMGen() error {
 	return nil
 }
 
-func genBM(ctx *cli.Context) error {
-	return generate(ctx, _bmProtoc)
+func genBM(files []string) error {
+	return generate(_bmProtoc, files)
 }

@@ -6,13 +6,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fever365/kratos/pkg/container/group"
-	"github.com/fever365/kratos/pkg/ecode"
-	"github.com/fever365/kratos/pkg/log"
-	limit "github.com/fever365/kratos/pkg/ratelimit"
-	"github.com/fever365/kratos/pkg/stat/metric"
+	"github.com/go-kratos/kratos/pkg/container/group"
+	"github.com/go-kratos/kratos/pkg/ecode"
+	"github.com/go-kratos/kratos/pkg/log"
+	limit "github.com/go-kratos/kratos/pkg/ratelimit"
+	"github.com/go-kratos/kratos/pkg/stat/metric"
 
-	cpustat "github.com/fever365/kratos/pkg/stat/sys/cpu"
+	cpustat "github.com/go-kratos/kratos/pkg/stat/sys/cpu"
 )
 
 var (

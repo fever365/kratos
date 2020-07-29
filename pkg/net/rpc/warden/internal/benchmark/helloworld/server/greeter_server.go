@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
-	pb "github.com/fever365/kratos/pkg/net/rpc/warden/internal/proto/testproto"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden"
+	pb "github.com/go-kratos/kratos/pkg/net/rpc/warden/internal/proto/testproto"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fever365/kratos/pkg/net/metadata"
-	xtime "github.com/fever365/kratos/pkg/time"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 )
 
 func TestPipeline(t *testing.T) {
@@ -92,7 +92,6 @@ func TestPipelineSmooth(t *testing.T) {
 		Interval: xtime.Duration(time.Second),
 		Buffer:   100,
 		Worker:   10,
-		Smooth:   true,
 	}
 	type result struct {
 		index int

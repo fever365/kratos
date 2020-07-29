@@ -6,23 +6,17 @@ import (
 	"runtime"
 	"sync"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/trace"
-=======
-	"github.com/fever365/kratos/pkg/log"
-	"github.com/fever365/kratos/pkg/net/metadata"
-	"github.com/fever365/kratos/pkg/net/trace"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/log"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
+	"github.com/go-kratos/kratos/pkg/net/trace"
 )
 
 var (
 	// ErrFull chan full.
 	ErrFull   = errors.New("fanout: chan full")
 	traceTags = []trace.Tag{
-		trace.Tag{Key: trace.TagSpanKind, Value: "background"},
-		trace.Tag{Key: trace.TagComponent, Value: "sync/pipeline/fanout"},
+		{Key: trace.TagSpanKind, Value: "background"},
+		{Key: trace.TagComponent, Value: "sync/pipeline/fanout"},
 	}
 )
 
@@ -73,7 +67,7 @@ type Fanout struct {
 // New new a fanout struct.
 func New(name string, opts ...Option) *Fanout {
 	if name == "" {
-		name = "fanout"
+		name = "anonymous"
 	}
 	o := &options{
 		worker: 1,
@@ -102,6 +96,7 @@ func (c *Fanout) proc() {
 		case t := <-c.ch:
 			wrapFunc(t.f)(t.ctx)
 			_metricChanSize.Set(float64(len(c.ch)), c.name)
+			_metricCount.Inc(c.name)
 		case <-c.ctx.Done():
 			return
 		}

@@ -3,15 +3,9 @@ package auth_test
 import (
 	"fmt"
 
-<<<<<<< HEAD
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
-	"github.com/fever365/kratos/example/blademaster/middleware/auth"
-	"github.com/fever365/kratos/pkg/net/metadata"
-=======
-	bm "github.com/fever365/kratos/pkg/net/http/blademaster"
-	"github.com/fever365/kratos/example/blademaster/middleware/auth"
-	"github.com/fever365/kratos/pkg/net/metadata"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/example/blademaster/middleware/auth"
+	bm "github.com/go-kratos/kratos/pkg/net/http/blademaster"
+	"github.com/go-kratos/kratos/pkg/net/metadata"
 )
 
 // This example create a identify middleware instance and attach to several path,

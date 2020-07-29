@@ -4,11 +4,7 @@
 package api
 
 import (
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/ecode"
-=======
-	"github.com/fever365/kratos/pkg/ecode"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/ecode"
 )
 
 // to suppressed 'imported but not used warning'

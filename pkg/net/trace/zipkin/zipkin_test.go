@@ -7,13 +7,8 @@ import (
 	"testing"
 	"time"
 
-<<<<<<< HEAD
-	"github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
-=======
-	"github.com/fever365/kratos/pkg/net/trace"
-	xtime "github.com/fever365/kratos/pkg/time"
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
+	"github.com/go-kratos/kratos/pkg/net/trace"
+	xtime "github.com/go-kratos/kratos/pkg/time"
 )
 
 func TestZipkin(t *testing.T) {
@@ -42,7 +37,7 @@ func TestZipkin(t *testing.T) {
 	t2 := trace.NewTracer("service2", report, true)
 	sp1 := t1.New("option_1")
 	sp2 := sp1.Fork("service3", "opt_client")
-	sp2.SetLog(trace.Log("log_k","log_v"))
+	sp2.SetLog(trace.Log("log_k", "log_v"))
 	// inject
 	header := make(http.Header)
 	t1.Inject(sp2, trace.HTTPFormat, header)

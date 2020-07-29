@@ -119,9 +119,9 @@ package dao
 import (
 	"context"
 
-	"github.com/fever365/kratos/pkg/naming/discovery"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/go-kratos/kratos/pkg/naming/discovery"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/resolver"
 
 	"google.golang.org/grpc"
 )
@@ -199,7 +199,6 @@ cancel()
 # 使用ETCD
 
 和使用discovery类似,只需要在注册时使用etcd naming即可。
-<<<<<<< HEAD
 
 ```go
 package dao
@@ -207,9 +206,9 @@ package dao
 import (
 	"context"
 
-	"github.com/fever365/kratos/pkg/naming/etcd"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/go-kratos/kratos/pkg/naming/etcd"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden"
+	"github.com/go-kratos/kratos/pkg/net/rpc/warden/resolver"
 
 	"google.golang.org/grpc"
 )
@@ -217,25 +216,6 @@ import (
 // AppID your appid, ensure unique.
 const AppID = "demo.service" // NOTE: example
 
-=======
-
-```go
-package dao
-
-import (
-	"context"
-
-	"github.com/fever365/kratos/pkg/naming/etcd"
-	"github.com/fever365/kratos/pkg/net/rpc/warden"
-	"github.com/fever365/kratos/pkg/net/rpc/warden/resolver"
-
-	"google.golang.org/grpc"
-)
-
-// AppID your appid, ensure unique.
-const AppID = "demo.service" // NOTE: example
-
->>>>>>> 3c6dbc7bf446fcf807931c0adeb03ddb0e59f774
 func init(){
 	// NOTE: 注意这段代码，表示要使用etcd进行服务发现 ,其他事项参考discovery的说明
     // NOTE: 在启动应用时，可以通过flag(-etcd.endpoints) 或者 环境配置(ETCD_ENDPOINTS)指定etcd节点
