@@ -23,8 +23,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/go-kratos/kratos/pkg/cache"
-	"github.com/go-kratos/kratos/pkg/sync/errgroup"
+	"github.com/fever365/kratos/pkg/cache"
+	"github.com/fever365/kratos/pkg/sync/errgroup"
 )
 
 var _ _bts

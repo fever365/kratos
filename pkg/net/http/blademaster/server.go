@@ -13,12 +13,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/go-kratos/kratos/pkg/conf/dsn"
-	"github.com/go-kratos/kratos/pkg/log"
-	"github.com/go-kratos/kratos/pkg/net/criticality"
-	"github.com/go-kratos/kratos/pkg/net/ip"
-	"github.com/go-kratos/kratos/pkg/net/metadata"
-	xtime "github.com/go-kratos/kratos/pkg/time"
+	"github.com/fever365/kratos/pkg/conf/dsn"
+	"github.com/fever365/kratos/pkg/log"
+	"github.com/fever365/kratos/pkg/net/criticality"
+	"github.com/fever365/kratos/pkg/net/ip"
+	"github.com/fever365/kratos/pkg/net/metadata"
+	xtime "github.com/fever365/kratos/pkg/time"
 
 	"github.com/pkg/errors"
 )

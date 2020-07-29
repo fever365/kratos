@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-kratos/kratos/pkg/net/trace"
+	"github.com/fever365/kratos/pkg/net/trace"
 	"github.com/stretchr/testify/assert"
 )
 

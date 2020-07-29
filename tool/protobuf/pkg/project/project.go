@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/go-kratos/kratos/tool/protobuf/pkg/utils"
+	"github.com/fever365/kratos/tool/protobuf/pkg/utils"
 	"github.com/pkg/errors"
 	"github.com/siddontang/go/ioutil2"
 )

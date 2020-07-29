@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/go-kratos/kratos/pkg/testing/lich"
+	"github.com/fever365/kratos/pkg/testing/lich"
 )
 
 func parseArgs() (flags map[string]string) {
